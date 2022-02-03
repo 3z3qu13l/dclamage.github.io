@@ -232,16 +232,18 @@
 </head>
 
 <body class="bg-dark">
-    <div class="container-sm bg-light pb-md-3">
-        <div class="container">
-            <h1>Paragon Calculator</h1>
+    <div class="container-sm pb-md-3">
+        <div class="container bg-light">
+            <div class="row text-center">
+                <h1>Paragon Calculator</h1>
+            </div>
         </div>
 
         <div class="container mt-md-3">
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">
-                        <img src="ressources/D3Icon.png" alt="D3" width="30" height="30">
+                        <img src="ressources/D3Icon.png" alt="D3" width="35" height="35">
                       </a>
                   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -255,7 +257,7 @@
                         <a class="nav-link" href="#pools">Pools</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="#goal">How many days to reach goal?</a>
+                        <a class="nav-link" href="#goal">How many days to reach your goal ?</a>
                       </li>
                     </ul>
                   </div>
@@ -263,8 +265,10 @@
               </nav>
         </div>
 
-        <div class="container mt-md-5" id="addPara">
-            <h3>Add two paragons</h3>
+        <div class="container mt-md-3 pt-md-2 pb-md-2 bg-light" id="addPara">
+            <div class="row align-items-center">
+                <h3>Add two paragons</h3>
+            </div>
             <div class="row align-items-center">
                 <div class="col-2">
                     <input id="p1" type="number" oninput="CalculateParagonSum()" class="form-control" placeholder="Paragon NS" max="20000">
@@ -284,14 +288,18 @@
             </div>
         </div>
 
-        <div class="container mt-md-5" id="pools">
-            <h3>Pools</h3>
+        <div class="container mt-md-3 pt-md-2 bg-light" id="pools">
+            <div class="row align-items-center">
+                <h3>Pools</h3>
+            </div>
             <div class="row align-items-center">
                 <div class="col-3">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="poolsparagon-addon1">Current paragon</span>
                         <input id="poolsparagon" type="number" oninput="CalculatePools()" class="form-control" placeholder="Current paragon" max="20000" aria-describedby="poolsparagon-addon1">
                     </div>
+                </div>
+                <div class="col-1">
                 </div>
                 <div class="col-3">
                     <div class="input-group mb-3">
@@ -306,6 +314,8 @@
                         <span class="input-group-text" id="poolsnumplayers-addon1">Number of Players</span>
                         <input id="poolsnumplayers" type="number" oninput="CalculatePools()" class="form-control" placeholder="Number of Players" max="4" aria-describedby="poolsnumplayers-addon1">
                     </div>
+                </div>
+                <div class="col-1">
                 </div>
                 <div class="col-3">
                     <div class="input-group mb-3">
@@ -408,8 +418,10 @@
             </div>
             </div>
 
-        <div class="container mt-md-5" id="goal">
-            <h3>How many days to reach goal?</h3>
+        <div class="container mt-md-3 pt-md-2 bg-light" id="goal">
+            <div class="row align-items-center">
+                <h3>How many days to reach your goal ?</h3>
+            </div>
             <div class="row align-items-center">
                 <div class="row align-items-center">
                     <div class="col-3">
@@ -462,6 +474,8 @@
                             <input id="hoursresult" type="number" class="form-control" placeholder="Hours Needed" aria-describedby="hoursresult-addon1" readonly>
                         </div>
                     </div>
+                    <div class="col-1">
+                    </div>
                     <div class="col-3">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="daysresult-addon1">Days Needed</span>
@@ -471,7 +485,7 @@
                 </div>
                 
                 <div class="row align-items-center">
-                    <div class="col-6">
+                    <div class="col-7">
                         <canvas id="paragonChart" width="400" height="400"></canvas>
                     </div>
                 </div>
