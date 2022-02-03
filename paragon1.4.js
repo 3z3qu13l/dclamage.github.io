@@ -1,22 +1,22 @@
 'use strict';
 
-function getJSON(url, callback){
+const getJSON = (url, callback) => {
     const request = new XMLHttpRequest();
     request.open('GET', url, true);
     request.setRequestHeader('Content-Type', 'application/json');
     request.setRequestHeader('Accept', 'application/json');
-    request.onload = function () {
-        if (this.status >= 200 && this.status < 400) {
-            return callback(JSON.parse(this.response));
+    request.onload = () => {
+        if (request.status >= 200 && request.status < 400) {
+            return callback(JSON.parse(request.response));
         }
     };
     request.send();
 }
 
 const paragons = [];
-function LoadParagon(callback) {
-    getJSON('paragontotals.json', function (data) {
-        for (var i = 0; i < 2252; i++) {
+const LoadParagon = callback => {
+    return getJSON('paragontotals.json', data => {
+        for (let i = 0; i < 2252; i++) {
             paragons.push(BigNumber(data[i]));
         }
         if (callback) return callback();
@@ -29,7 +29,7 @@ const c3 = BigNumber(229704000);
 const c4 = BigNumber(102000);
 const half = BigNumber(0.5);
 const six = BigNumber(6);
-function GetParagonLevelXP(level) {
+const GetParagonLevelXP = level => {
     if (isNaN(level) || level <= 0) return paragons[0];
     if (level < 2252) return paragons[level];
 
@@ -39,11 +39,9 @@ function GetParagonLevelXP(level) {
     return c1.plus(c2.multipliedBy(x).plus(c3.multipliedBy((x.multipliedBy(xp1).multipliedBy(half))).plus((x.multipliedBy(xp1).multipliedBy(xp2).dividedBy(six)) * c4)))
 }
 
-function DiffParagon(a, b) {
-    return GetParagonLevelXP(Math.max(a, b)).minus(GetParagonLevelXP(Math.min(a, b)));
-}
+const DiffParagon = (a, b) => GetParagonLevelXP(Math.max(a, b)).minus(GetParagonLevelXP(Math.min(a, b)));
 
-function GetParagonLevel(xp) {
+const GetParagonLevel = xp => {
     let l = 0;
     let h = 1;
     while (GetParagonLevelXP(h).isLessThan(xp)) {
@@ -62,19 +60,15 @@ function GetParagonLevel(xp) {
     return l;
 }
 
-const baseRiftXP = BigNumber(11794543);
-const baseCloseXP = BigNumber(15667533);
-function ScaleXP(xp, level) {
+const ScaleXP = (xp, level) => {
     if (level <= 25) return xp.multipliedBy(Math.pow(1.127, level - 1));
     if (level <= 70) return xp.multipliedBy(Math.pow(1.127, 24) * Math.pow(1.08, level - 25));
 
     return xp.multipliedBy(Math.pow(1.127, 24) * Math.pow(1.08, 70 - 25) * Math.pow(1.05, level - 70));
 }
 
-function GetRiftXP(level) {
-    return ScaleXP(baseRiftXP, level);
-}
+const baseRiftXP = BigNumber(11794543);
+const GetRiftXP = level => ScaleXP(baseRiftXP, level);
 
-function GetCloseXP(level) {
-    return ScaleXP(baseCloseXP, level);
-}
+const baseCloseXP = BigNumber(15667533);
+const GetCloseXP = level => ScaleXP(baseCloseXP, level);

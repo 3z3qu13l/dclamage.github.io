@@ -67,7 +67,7 @@
         const billion = BigNumber('1000000000');
         const million = BigNumber('1000000');
         const thousand = BigNumber('1000');
-        function Humanize(number) {
+        const Humanize = number => {
             if (number.isGreaterThan(billion)) return `${number.dividedBy(billion).toFixed(2, 4)} billion`;
             if (number.isGreaterThan(million)) return `${number.dividedBy(million).toFixed(2, 4)} million`;
             if (number.isGreaterThan(thousand)) return `${number.dividedBy(thousand).toFixed(2, 4)} thousand`;
@@ -125,9 +125,7 @@
             document.getElementById('poolsresulttotal').value = totalNumPools.toFixed(2, 4);
         }
 
-        function GetLocalStorage(key, def) {
-            return localStorage.getItem(key) || def;
-        }
+        const GetLocalStorage = (key, def) => localStorage.getItem(key) || def;
 
         function HaveParagon() {
             // Add paragons
@@ -169,10 +167,8 @@
                 curXP = curXP.plus(xpDay)
             }
 
-            const ctx = document.getElementById('paragonChart');
             if (existingChart) existingChart.destroy();
-
-            existingChart = new Chart(ctx, {
+            existingChart = new Chart(document.getElementById('paragonChart'), {
                 type: 'line',
                 data: {
                     labels: days,
@@ -222,12 +218,12 @@
             });
         }
 
-        const loader = setInterval(function () {
-            if(document.readyState !== 'complete') return;
+        const loader = setInterval(() => {
+            if (document.readyState !== 'complete') return;
 
             clearInterval(loader);
-            LoadParagon(HaveParagon);
-         }, 300);
+            return LoadParagon(HaveParagon);
+        }, 300);
     </script>
 </head>
 
