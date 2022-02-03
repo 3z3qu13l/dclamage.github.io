@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Paragon Calculator</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/siwalikm/quick-form-css@2.2.2/qfc-dark.css">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-    <script src='https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js'></script>
+    <link rel="shortcut icon" href="ressources/D3Icon.png" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bignumber.js@9.0.2/bignumber.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="paragon1.4.js"></script>
     <script>
         "use strict";
@@ -200,6 +204,7 @@
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: true,
                     title: {
                         display: true,
                         text: 'Paragon Level Over Time'
@@ -241,136 +246,249 @@
     </script>
 </head>
 
-<body>
-    <div id="maindiv" class="qfc-container" hidden>
-        <h1>Paragon Calculator</h1>
+<body class="bg-dark">
+    <div class="container-sm bg-light">
+        <div class="container">
+            <h1>Paragon Calculator</h1>
+        </div>
 
-        <h3>Add two paragons</h3>
-        <table>
-            <tr>
-                <td><input id="p1" type="text" /></td>
-                <td width="100">+</td>
-                <td><input id="p2" type="text" /></td>
-                <td width="100">=</td="center">
-                <td><input id="psum" type="text" readonly /></td>
-            </tr>
-        </table>
+        <div class="container mt-md-3">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">
+                        <img src="ressources/D3Icon.png" alt="D3" width="30" height="30">
+                      </a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#addPara">Add two paragons</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#pools">Pools</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#goal">How many days to reach goal?</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </nav>
+        </div>
 
-        <h3>Pools</h3>
-        <table>
-            <tr><td colspan="2"><h6>--- Inputs ---</h6></td></tr>
-            <tr>
-                <td>Current paragon</td>
-                <td><input id="poolsparagon" type="text" /></td>
-            </tr>
-            <tr>
-                <td>GR Level</td>
-                <td><input id="poolsgrlevel" type="text" /></td>
-            </tr>
-            <tr>
-                <td>Number of Players</td>
-                <td><input id="poolsnumplayers" type="text" /></td>
-            </tr>
-            <tr>
-                <td>XP From Gear</td>
-                <td><input id="poolsxpgear" type="text" /></td>
-            </tr>
-            <tr>
-                <td colspan="2"><h6>--- RESULT ---</h6></td>
-            </tr>
-            <tr>
-                <td>Pools For Rift</td>
-                <td><input id="poolsresultrift" type="text" readonly /></td>
-            </tr>
-            <tr>
-                <td>Pools For Close</td>
-                <td><input id="poolsresultclose" type="text" readonly /></td>
-            </tr>
-            <tr>
-                <td>Total Pools</td>
-                <td><input id="poolsresulttotal" type="text" readonly /></td>
-            </tr>
-            <tr><td colspan="2"><h6>--- Raw XP Numbers ---</h6></td></tr>
-            <tr>
-                <td>Rift [Unpooled]</td>
-                <td>
-                    <input id="baseriftxp" type="text" readonly />
-                </td>
-            </tr>
-            <tr>
-                <td>Rift [Pooled]</td>
-                <td>
-                    <input id="pooledriftxp" type="text" readonly />
-                </td>
-            </tr>
-            <tr>
-                <td>Close XP [Unpooled]</td>
-                <td>
-                    <input id="baseclosexp" type="text" readonly />
-                </td>
-            </tr>
-            <tr>
-                <td>Close XP [Pooled]</td>
-                <td>
-                    <input id="pooledclosexp" type="text" readonly />
-                </td>
-            </tr>
-            <tr>
-                <td>Total XP [Unpooled]</td>
-                <td>
-                    <input id="basetotalxp" type="text" readonly />
-                </td>
-            </tr>
-            <tr>
-                <td>Total XP [Close Pooled]</td>
-                <td>
-                    <input id="closepooledtotalxp" type="text" readonly />
-                </td>
-            </tr>
-            <tr>
-                <td>Total XP [Fully Pooled]</td>
-                <td>
-                    <input id="allpooledtotalxp" type="text" readonly />
-                </td>
-            </tr>
-        </table>
+        <div class="container mt-md-5" id="addPara">
+            <h3>Add two paragons</h3>
+            <div class="row align-items-center">
+                <div class="col-2">
+                    <input id="p1" type="number" class="form-control" placeholder="Paragon NS" max="20000">
+                </div>
+                <div class="col-1">
+                    <p class="text-center"><i class="fas fa-plus align-middle"></i></p>
+                </div>
+                <div class="col-2">
+                    <input id="p2" type="number" class="form-control" placeholder="Paragon Season" max="20000">
+                </div>
+                <div class="col-1">
+                    <p class="text-center"><i class="fas fa-equals align-middle"></i></p>
+                </div>
+                <div class="col-2">
+                    <input id="psum" type="number" class="form-control" placeholder="Paragon Total" max="20000" readonly>
+                </div>
+            </div>
+        </div>
 
-        <h3>How many days to reach goal?</h3>
-        <table>
-            <tr>
-                <td>Current paragon</td>
-                <td><input id="current" type="text" /></td>
-            </tr>
-            <tr>
-                <td>Desired paragon</td>
-                <td><input id="desired" type="text" /></td>
-            </tr>
-            <tr>
-                <td>Billion XP Per Hour</td>
-                <td><input id="xphr" type="text" /></td>
-            </tr>
-            <tr>
-                <td>Hours Per Day</td>
-                <td><input id="hrsperday" type="text" /></td>
-            </tr>
-            <tr>
-                <td colspan="2">--- RESULT ---</td>
-            </tr>
-            <tr>
-                <td id="xpresultlabel">Trillion XP Needed</td>
-                <td><input id="xpresult" type="text" readonly /></td>
-            </tr>
-            <tr>
-                <td>Hours Needed</td>
-                <td><input id="hoursresult" type="text" readonly /></td>
-            </tr>
-            <tr>
-                <td>Days Needed</td>
-                <td><input id="daysresult" type="text" readonly /></td>
-            </tr>
-        </table>
+        <div class="container mt-md-5" id="pools">
+            <h3>Pools</h3>
+            <div class="row align-items-center">
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="poolsparagon-addon1">Current paragon</span>
+                        <input id="poolsparagon" type="number" class="form-control" placeholder="Current paragon" max="20000" aria-describedby="poolsparagon-addon1">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="poolsgrlevel-addon1">GR Level</span>
+                        <input id="poolsgrlevel" type="number" class="form-control" placeholder="GR Level" max="150" aria-describedby="poolsgrlevel-addon1">
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="poolsnumplayers-addon1">Number of Players</span>
+                        <input id="poolsnumplayers" type="number" class="form-control" placeholder="Number of Players" max="4" aria-describedby="poolsnumplayers-addon1">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="poolsxpgear-addon1">XP From Gear</span>
+                        <input id="poolsxpgear" type="number" class="form-control" placeholder="XP From Gear" aria-describedby="poolsxpgear-addon1">
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <h4>Result</h3>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="poolsresultrift-addon1">Pools For Rift</span>
+                        <input id="poolsresultrift" type="number" class="form-control" placeholder="Pools For Rift" aria-describedby="poolsresultrift-addon1" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="poolsresultclose-addon1">Pools For Close</span>
+                        <input id="poolsresultclose" type="number" class="form-control" placeholder="Pools For Close" aria-describedby="poolsresultclose-addon1" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-3">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text" id="poolsresulttotal-addon1">Total Pools</span>
+                        <input id="poolsresulttotal" type="number" class="form-control" placeholder="Total Pools" aria-describedby="poolsresulttotal-addon1" readonly>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <p>
+                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#rawxpnumbers"
+                        aria-expanded="false" aria-controls="rawxpnumbers">
+                        Raw XP Numbers
+                    </button>
+                </p>
+                <div class="collapse" id="rawxpnumbers">
+                    <div class="card card-body">
+                        <div class="row align-items-center">
+                            <div class="col-3">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="baseriftxp-addon1">Rift [Unpooled]</span>
+                                    <input id="baseriftxp" type="text" class="form-control" placeholder="Rift [Unpooled]" aria-describedby="baseriftxp-addon1" readonly>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="pooledriftxp-addon1">Rift [Pooled]</span>
+                                    <input id="pooledriftxp" type="text" class="form-control" placeholder="Rift [Pooled]" aria-describedby="pooledriftxp-addon1" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-3">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="baseclosexp-addon1">Close XP [Unpooled]</span>
+                                    <input id="baseclosexp" type="text" class="form-control" placeholder="Rift [Unpooled]" aria-describedby="baseclosexp-addon1" readonly>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="pooledclosexp-addon1">Close XP [Pooled]</span>
+                                    <input id="pooledclosexp" type="text" class="form-control" placeholder="Rift [Pooled]" aria-describedby="pooledclosexp-addon1" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-3">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="basetotalxp-addon1">Total XP [Unpooled]</span>
+                                    <input id="basetotalxp" type="text" class="form-control" placeholder="Rift [Unpooled]" aria-describedby="basetotalxp-addon1" readonly>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="closepooledtotalxp-addon1">Total XP [Pooled]</span>
+                                    <input id="closepooledtotalxp" type="text" class="form-control" placeholder="Rift [Pooled]" aria-describedby="closepooledtotalxp-addon1" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-3">
+                                <div class="input-group mb-3">
+                                    <span class="input-group-text" id="allpooledtotalxp-addon1">Total XP [Fully Pooled]</span>
+                                    <input id="allpooledtotalxp" type="text" class="form-control" placeholder="Rift [Pooled]" aria-describedby="allpooledtotalxp-addon1" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
 
-        <canvas id="paragonChart" width="400" height="400"></canvas>
+        <div class="container mt-md-5" id="goal">
+            <h3>How many days to reach goal?</h3>
+            <div class="row align-items-center">
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="current-addon1">Current paragon</span>
+                            <input id="current" type="number" class="form-control" placeholder="Current paragon" max="20000" aria-describedby="current-addon1">
+                        </div>
+                    </div>
+                    <div class="col-1">
+                        <p class="text-center"><i class="fas fa-arrow-right align-middle"></i></p>
+                    </div>
+                    <div class="col-3">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="desired-addon1">Desired paragon</span>
+                            <input id="desired" type="number" class="form-control" placeholder="Desired Total" max="20000" aria-describedby="desired-addon1">
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="xphr-addon1">Billion XP Per Hour</span>
+                            <input id="xphr" type="number" class="form-control" placeholder="Billion XP Per Hour" aria-describedby="xphr-addon1">
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="hrsperday-addon1">Hours Per Day</span>
+                            <input id="hrsperday" type="number" class="form-control" placeholder="Hours Per Day" max="24" aria-describedby="hrsperday-addon1">
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <h4>Result</h3>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="xpresult-addon1">Trillion XP Needed</span>
+                            <input id="xpresult" type="number" class="form-control" placeholder="Trillion XP Needed" aria-describedby="xpresult-addon1" readonly>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-3">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="hoursresult-addon1">Hours Needed</span>
+                            <input id="hoursresult" type="number" class="form-control" placeholder="Hours Per Day" aria-describedby="hoursresult-addon1" readonly>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="daysresult-addon1">Days Needed</span>
+                            <input id="daysresult" type="number" class="form-control" placeholder="Days Needed" aria-describedby="daysresult-addon1" readonly>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row align-items-center">
+                    <div class="col-6">
+                        <canvas id="paragonChart" width="400" height="400"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 
