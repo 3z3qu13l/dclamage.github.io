@@ -22,12 +22,9 @@ var c4 = BigNumber(102000);
 var half = BigNumber(0.5);
 var six = BigNumber(6);
 function GetParagonLevelXP(level) {
-    if (isNaN(level) || level <= 0) {
-        return paragons[0];
-    }
-    if (level < 2252) {
-        return paragons[level];
-    }
+    if (isNaN(level) || level <= 0) return paragons[0];
+    if (level < 2252) return paragons[level];
+
     var x = BigNumber(level - 2252);
     var xp1 = BigNumber(level - 2251);
     var xp2 = BigNumber(level - 2250);
@@ -62,12 +59,9 @@ function GetParagonLevel(xp) {
 var baseRiftXP = BigNumber(11794543);
 var baseCloseXP = BigNumber(15667533);
 function ScaleXP(xp, level) {
-    if (level <= 25) {
-        return xp.multipliedBy(Math.pow(1.127, level - 1));
-    }
-    if (level <= 70) {
-        return xp.multipliedBy(Math.pow(1.127, 24) * Math.pow(1.08, level - 25));
-    }
+    if (level <= 25) return xp.multipliedBy(Math.pow(1.127, level - 1));
+    if (level <= 70) return xp.multipliedBy(Math.pow(1.127, 24) * Math.pow(1.08, level - 25));
+
     return xp.multipliedBy(Math.pow(1.127, 24) * Math.pow(1.08, 70 - 25) * Math.pow(1.05, level - 70));
 }
 
