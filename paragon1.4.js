@@ -15,7 +15,7 @@ const getJSON = (url, callback) => {
 
 const paragons = [];
 const LoadParagon = callback => {
-    return getJSON('paragontotals.json', data => {
+    return getJSON('ressources/paragontotals.json', data => {
         for (let i = 0; i < 2252; i++) {
             paragons.push(BigNumber(data[i]));
         }
