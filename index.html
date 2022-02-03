@@ -167,6 +167,36 @@
                 curXP = curXP.plus(xpDay)
             }
 
+            let width, height, gradient;
+            const CHART_COLORS = {
+                red: 'rgb(255, 99, 132)',
+                orange: 'rgb(255, 159, 64)',
+                yellow: 'rgb(255, 205, 86)',
+                green: 'rgb(75, 192, 192)',
+                greener: 'rgb(75, 192, 75)',
+                blue: 'rgb(54, 162, 235)',
+                purple: 'rgb(153, 102, 255)',
+                grey: 'rgb(201, 203, 207)'
+            };
+            const getGradient = (ctx, chartArea) => {
+                const chartWidth = chartArea.right - chartArea.left;
+                const chartHeight = chartArea.bottom - chartArea.top;
+                if (!gradient || width !== chartWidth || height !== chartHeight) {
+                    // Create the gradient because this is either the first render or the size of the chart has changed
+                    width = chartWidth;
+                    height = chartHeight;
+                    gradient = ctx.createLinearGradient(0, chartArea.bottom, 0, chartArea.top);
+                    gradient.addColorStop(0, CHART_COLORS.blue);
+                    gradient.addColorStop(0.1, CHART_COLORS.purple);
+                    gradient.addColorStop(0.3, CHART_COLORS.red);
+                    gradient.addColorStop(0.6, CHART_COLORS.yellow);
+                    gradient.addColorStop(0.7, CHART_COLORS.green);
+                    gradient.addColorStop(1, CHART_COLORS.greener);
+                }
+
+                return gradient;
+            }
+
             if (existingChart) existingChart.destroy();
             existingChart = new Chart(document.getElementById('paragonChart'), {
                 type: 'line',
@@ -175,9 +205,18 @@
                     datasets: [{
                         label: 'Paragon Level',
                         data: level,
-                        backgroundColor: 'rgb(255, 99, 132)',
-                        borderColor: 'rgb(255, 99, 132)',
-                        fill: false,
+                        backgroundColor: context => {
+                            const chart = context.chart;
+                            const {ctx, chartArea} = chart;
+
+                            if (!chartArea) {
+                                // This case happens on initial chart load
+                                return;
+                            }
+                            return getGradient(ctx, chartArea);
+                        },
+                        borderColor: CHART_COLORS.grey,
+                        fill: true
                     }]
                 },
                 options: {
