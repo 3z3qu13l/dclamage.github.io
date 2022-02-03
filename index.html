@@ -34,7 +34,7 @@
             localStorage.setItem('xphr', xpHrInput);
             localStorage.setItem('hrsperday', hrsPerDayInput);
 
-            const xpHr = BigNumber('1000000000').multipliedBy(BigNumber(xpHrInput));
+            const xpHr = BigNumber('1000000000000').multipliedBy(BigNumber(xpHrInput));
             const hrsPerDay = BigNumber(hrsPerDayInput);
             const xpNeeded = DiffParagon(desired, current);
             const hours = xpNeeded.dividedBy(xpHr);
@@ -444,11 +444,8 @@
                 <div class="row align-items-center">
                     <div class="col-3">
                         <div class="input-group mb-3">
-                            <span class="input-group-text" id="xphr-addon1">Billion XP / Hour</span>
+                            <span class="input-group-text" id="xphr-addon1">Trillion XP / Hour</span>
                             <input id="xphr" type="number" oninput="CalculateParagon()" class="form-control" placeholder="number" aria-describedby="xphr-addon1">
-                            <span class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="top" title="1000 Billion = 1 Trillion">
-                                <i class="fas fa-info"></i>
-                            </span>
                         </div>
                     </div>
                 </div>
