@@ -233,14 +233,14 @@
 
 <body class="bg-dark">
     <div class="container-sm pb-md-3">
-        <div class="container bg-light">
+        <div class="container bg-light rounded-3">
             <div class="row text-center">
                 <h1>Paragon Calculator</h1>
             </div>
         </div>
 
-        <div class="container mt-md-3">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container mt-md-2">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary rounded-3">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">
                         <img src="ressources/D3Icon.png" alt="D3" width="35" height="35">
@@ -265,7 +265,7 @@
               </nav>
         </div>
 
-        <div class="container mt-md-3 pt-md-2 pb-md-2 bg-light" id="addPara">
+        <div class="container mt-md-2 pt-md-2 pb-md-2 bg-light rounded-3" id="addPara">
             <div class="row align-items-center">
                 <h3>Add two paragons</h3>
             </div>
@@ -288,7 +288,7 @@
             </div>
         </div>
 
-        <div class="container mt-md-3 pt-md-2 bg-light" id="pools">
+        <div class="container mt-md-2 pt-md-2 bg-light rounded-3" id="pools">
             <div class="row align-items-center">
                 <h3>Pools</h3>
             </div>
@@ -296,7 +296,7 @@
                 <div class="col-3">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="poolsparagon-addon1">Current paragon</span>
-                        <input id="poolsparagon" type="number" oninput="CalculatePools()" class="form-control" placeholder="Current paragon" max="20000" aria-describedby="poolsparagon-addon1">
+                        <input id="poolsparagon" type="number" oninput="CalculatePools()" class="form-control" placeholder="number" max="20000" aria-describedby="poolsparagon-addon1">
                     </div>
                 </div>
                 <div class="col-1">
@@ -304,7 +304,7 @@
                 <div class="col-3">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="poolsgrlevel-addon1">GR Level</span>
-                        <input id="poolsgrlevel" type="number" oninput="CalculatePools()" class="form-control" placeholder="GR Level" max="150" aria-describedby="poolsgrlevel-addon1">
+                        <input id="poolsgrlevel" type="number" oninput="CalculatePools()" class="form-control" placeholder="number" max="150" aria-describedby="poolsgrlevel-addon1">
                     </div>
                 </div>
             </div>
@@ -312,7 +312,7 @@
                 <div class="col-3">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="poolsnumplayers-addon1">Number of Players</span>
-                        <input id="poolsnumplayers" type="number" oninput="CalculatePools()" class="form-control" placeholder="Number of Players" max="4" aria-describedby="poolsnumplayers-addon1">
+                        <input id="poolsnumplayers" type="number" oninput="CalculatePools()" class="form-control" placeholder="number" max="4" aria-describedby="poolsnumplayers-addon1">
                     </div>
                 </div>
                 <div class="col-1">
@@ -320,7 +320,8 @@
                 <div class="col-3">
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="poolsxpgear-addon1">XP From Gear</span>
-                        <input id="poolsxpgear" type="number" oninput="CalculatePools()" class="form-control" placeholder="XP From Gear" aria-describedby="poolsxpgear-addon1">
+                        <input id="poolsxpgear" type="number" oninput="CalculatePools()" class="form-control" placeholder="number" aria-describedby="poolsxpgear-addon1">
+                        <span class="input-group-text">%</span>
                     </div>
                 </div>
             </div>
@@ -348,7 +349,7 @@
                     <div class="input-group mb-3">
                         <span class="input-group-text" id="poolsresulttotal-addon1">Total Pools</span>
                         <input id="poolsresulttotal" type="number" class="form-control" placeholder="Total Pools" aria-describedby="poolsresulttotal-addon1" readonly>
-                        <span class="btn btn-secondary" data-bs-toggle="tooltip" data-bs-placement="top" title="Below 0.75 is generally when you want to start picking pool">
+                        <span class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="top" title="Below 0.75 is generally when you want to start picking pool">
                             <i class="fas fa-info"></i>
                         </span>
                     </div>
@@ -418,7 +419,7 @@
             </div>
             </div>
 
-        <div class="container mt-md-3 pt-md-2 bg-light" id="goal">
+        <div class="container mt-md-2 pt-md-2 bg-light rounded-3" id="goal">
             <div class="row align-items-center">
                 <h3>How many days to reach your goal ?</h3>
             </div>
@@ -427,7 +428,7 @@
                     <div class="col-3">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="current-addon1">Current paragon</span>
-                            <input id="current" type="number" oninput="CalculateParagon()" class="form-control" placeholder="Current paragon" max="20000" aria-describedby="current-addon1">
+                            <input id="current" type="number" oninput="CalculateParagon()" class="form-control" placeholder="number" max="20000" aria-describedby="current-addon1">
                         </div>
                     </div>
                     <div class="col-1">
@@ -436,7 +437,7 @@
                     <div class="col-3">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="desired-addon1">Desired paragon</span>
-                            <input id="desired" type="number" oninput="CalculateParagon()" class="form-control" placeholder="Desired Total" max="20000" aria-describedby="desired-addon1">
+                            <input id="desired" type="number" oninput="CalculateParagon()" class="form-control" placeholder="number" max="20000" aria-describedby="desired-addon1">
                         </div>
                     </div>
                 </div>
@@ -444,7 +445,10 @@
                     <div class="col-3">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="xphr-addon1">Billion XP / Hour</span>
-                            <input id="xphr" type="number" oninput="CalculateParagon()" class="form-control" placeholder="Billion XP / Hour" aria-describedby="xphr-addon1">
+                            <input id="xphr" type="number" oninput="CalculateParagon()" class="form-control" placeholder="number" aria-describedby="xphr-addon1">
+                            <span class="input-group-text" data-bs-toggle="tooltip" data-bs-placement="top" title="1000 Billion = 1 Trillion">
+                                <i class="fas fa-info"></i>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -452,7 +456,7 @@
                     <div class="col-3">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="hrsperday-addon1">Hours Played / Day</span>
-                            <input id="hrsperday" type="number" oninput="CalculateParagon()" class="form-control" placeholder="Hours / Day" max="24" aria-describedby="hrsperday-addon1">
+                            <input id="hrsperday" type="number" oninput="CalculateParagon()" class="form-control" placeholder="number" max="24" aria-describedby="hrsperday-addon1">
                         </div>
                     </div>
                 </div>
