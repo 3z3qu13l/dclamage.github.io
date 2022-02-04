@@ -1,0 +1,28 @@
+{
+  "name": "paragon-calculator",
+  "version": "1.0.0",
+  "description": "Paragon calculator for Diablo III - Only to keep track of html deps",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3z3qu13l/paragonCalculator.git"
+  },
+  "keywords": [
+    "diablo"
+  ],
+  "author": "3z3qu13l",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/3z3qu13l/paragonCalculator/issues"
+  },
+  "homepage": "https://github.com/3z3qu13l/paragonCalculator#readme",
+  "dependencies": {
+    "bignumber.js": "9.0.2",
+    "bootstrap": "5.1.3",
+    "bootstrap-icons": "1.8.0",
+    "chart.js": "3.7.0"
+  }
+}
